@@ -16,35 +16,90 @@
             </div>
             <div class="form-inner">
                 <form [style.marginLeft]="formMargin" class="login" [formGroup]="loginForm">
-                    <div class="field">
-                        <input type="text" placeholder="Email Address" formControlName="email" required />
+                    <div>
+                        <div class="field">
+                            <input type="text" placeholder="Email Address" formControlName="email" required />
+
+                        </div>
+                        <div *ngIf="isLoginSubmitted && f['email'].errors">
+                            <small class="text-danger" *ngIf="f['email'].errors['required']">Email is required.</small>
+                            <small class="text-danger" *ngIf="f['email'].errors['email']">Enter a valid email.</small>
+                        </div>
                     </div>
-                    <div class="field">
-                        <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Password"
-                            formControlName="password" required />
-                        <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
-                            (click)="togglePasswordVisibility()"></i>
+                    <div>
+                        <div class="field">
+                            <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Password"
+                                formControlName="password" required />
+                            <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+                                (click)="togglePasswordVisibility()"></i>
+
+                        </div>
+                        <div *ngIf="isLoginSubmitted && f['password'].errors">
+                            <small class="text-danger" *ngIf="f['password'].errors['required']">Password is
+                                required.</small>
+
+                        </div>
                     </div>
+
                     <div class="field btn">
                         <div class="btn-layer"></div>
                         <input type="submit" value="Login" (click)="onSubmit()" />
                     </div>
                 </form>
-                <form class="signup">
-                    <div class="field">
-                        <input type="text" placeholder="Email Address" required />
+
+                <form class="signup" [formGroup]="signUpForm">
+                    <div>
+                        <div class="field">
+                            <input type="text" placeholder="Email Address" required formControlName="email" />
+                        </div>
+                        <small class="text-danger" *ngIf="isSubmitted && signUpForm.get('email')?.hasError('required')">
+                            Email is required
+                        </small>
+                        <small class="text-danger" *ngIf="isSubmitted && signUpForm.get('email')?.hasError('email')">
+                            Please enter a valid email address
+                        </small>
                     </div>
-                    <div class="field">
-                        <input type="password" placeholder="Password" required />
+
+                    <div>
+
+                        <div class="field">
+                            <input [type]="isPasswordVisible1 ? 'text' : 'password'" placeholder="Password"
+                                formControlName="password" required />
+                            <i class="fa" [ngClass]="isPasswordVisible1 ? 'fa-eye-slash' : 'fa-eye'"
+                                (click)="togglePasswordVisibility1()"></i>
+
+                        </div>
+                        <small class="text-danger"
+                            *ngIf="isSubmitted && signUpForm.get('password')?.hasError('required')">
+                            Password is required
+                        </small>
+
                     </div>
-                    <div class="field">
-                        <input type="password" placeholder="Confirm password" required />
+
+                    <div>
+                        <div class="field">
+                            <input [type]="isPasswordVisible2 ? 'text' : 'password'" placeholder="Password"
+                                formControlName="confirmPassword" required />
+                            <i class="fa" [ngClass]="isPasswordVisible2 ? 'fa-eye-slash' : 'fa-eye'"
+                                (click)="togglePasswordVisibility2()"></i>
+
+                        </div>
+                        <small class="text-danger"
+                            *ngIf="isSubmitted && signUpForm.get('confirmPassword')?.hasError('required')">
+                            Confirm Password is required
+                        </small>
+                        <small class="text-danger" *ngIf="isSubmitted && signUpForm?.hasError('passwordMismatch')">
+                            Passwords not Match
+                        </small>
                     </div>
+
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input type="submit" value="Signup" />
+                        <input type="submit" value="Signup" (click)="signUp()" />
                     </div>
                 </form>
+
+
             </div>
         </div>
     </div>

@@ -1,1 +1,77 @@
-<p>dashboard works!</p>
+<div class="container mt-4">
+    <h2 class="text-center">Event Management</h2>
+    <form [formGroup]="eventForm" (ngSubmit)="submitEvent()" class="p-4 border rounded bg-light">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control" formControlName="title" />
+            <small
+                *ngIf="(eventForm.controls['title'].invalid && eventForm.controls['title'].touched) || (isSubmitted && eventForm.controls['title'].invalid)"
+                class="text-danger">
+                Title is required.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" formControlName="description"></textarea>
+            <small
+                *ngIf="(eventForm.controls['description'].invalid && eventForm.controls['description'].touched) || (isSubmitted && eventForm.controls['description'].invalid)"
+                class="text-danger">
+                Description is required.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="date" class="form-control" formControlName="date" />
+            <small
+                *ngIf="(eventForm.controls['date'].invalid && eventForm.controls['date'].touched) || (isSubmitted && eventForm.controls['date'].invalid)"
+                class="text-danger">
+                Date is required.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" formControlName="location" />
+            <small
+                *ngIf="(eventForm.controls['location'].invalid && eventForm.controls['location'].touched) || (isSubmitted && eventForm.controls['location'].invalid)"
+                class="text-danger">
+                Location is required.
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ isEditing ? 'Update' : 'Add' }} Event</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()">Cancel</button>
+    </form>
+
+    <ng-container *ngIf="events.length>0">
+        <h3 class="mt-4">Event List</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of events">
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.description }}</td>
+                        <td>{{ event.date }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm me-2" (click)="editEvent(event)">Edit</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.id!)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+
+</div>

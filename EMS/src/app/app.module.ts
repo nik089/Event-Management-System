@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -19,6 +20,7 @@ import { ToastrModule } from 'ng6-toastr-notifications';
 
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

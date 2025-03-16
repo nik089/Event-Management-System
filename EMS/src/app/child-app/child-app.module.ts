@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ChildAppComponent } from './child-app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderModule } from '../shared/header/header.module';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const CHILD_ROUTES: Routes = [
@@ -22,11 +24,12 @@ const CHILD_ROUTES: Routes = [
 ]
 
 @NgModule({
-  declarations: [ChildAppComponent],
+  declarations: [ChildAppComponent, DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(CHILD_ROUTES),
     HeaderModule,
+    FormsModule, ReactiveFormsModule
   ]
 })
 export class ChildAppModule { }
