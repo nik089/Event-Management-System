@@ -1,3 +1,4 @@
+<div class="loader" *ngIf="isLoader"></div>
 <div class="container mt-4">
     <h2 class="text-center">Event Management</h2>
     <form [formGroup]="eventForm" (ngSubmit)="submitEvent()" class="p-4 border rounded bg-light">

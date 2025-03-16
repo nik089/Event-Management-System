@@ -9,13 +9,6 @@
   ],
   "events": [
     {
-      "title": "Marketing Summit",
-      "description": "A gathering of marketing professionals to discuss industry strategies.",
-      "date": "2025-07-22",
-      "location": "New York, India",
-      "id": "2"
-    },
-    {
       "title": "Music Festival",
       "description": "A weekend-long festival featuring top artists from around the world.",
       "date": "2025-08-10",

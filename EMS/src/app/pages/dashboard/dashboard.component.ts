@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   isEditing = false;
   selectedEventId: number | null = null;
   isSubmitted: boolean = false;
+  isLoader: boolean = true;
 
   constructor(private eventService: EmsService, private fb: FormBuilder, private toster: ToastrManager) { }
 
@@ -30,9 +31,13 @@ export class DashboardComponent implements OnInit {
 
   // Load events
   loadEvents() {
-    this.eventService.getEvents().subscribe((data) => {
-      this.events = data;
-      console.log(this.events, "evee")
+    this.eventService.getEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+        this.isLoader = false;
+      },
+      error: (err) => {
+      }
     });
   }
 
