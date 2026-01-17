@@ -5,6 +5,12 @@
       "email": "test123@gmail.com",
       "password": "Test12345@",
       "confirmPassword": "Test12345@"
+    },
+    {
+      "id": "65db",
+      "email": "test8888@yopmail.com",
+      "password": "test8888@",
+      "confirmPassword": "test8888@"
     }
   ],
   "events": [
