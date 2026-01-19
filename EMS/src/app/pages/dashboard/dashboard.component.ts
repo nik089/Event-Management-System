@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
         this.eventService.addEvent(formData).subscribe(() => {
           this.loadEvents();
           this.resetForm();
-          this.toster.successToastr('add event succesfull!');
+          this.toster.successToastr('Add Event Succesfull!');
           this.isSubmitted = false;
         });
       }
@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
   deleteEvent(id: number) {
     this.eventService.deleteEvent(id).subscribe(() => {
       this.loadEvents();
-      this.toster.successToastr('Event deleted sucessfull!!')
+      this.toster.successToastr('Event deleted sucessfull !!')
     });
   }
 
